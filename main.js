@@ -22,5 +22,10 @@ var atrirot = 45;
 setInterval(function() {
 	atri.attr("transform", "rotate(" + atrirot + " 600 400)");
 	atrirot += 1.3;
+	atrirot = Math.round(atrirot * 10) / 10;
 	atrirot = atrirot % 360;
 }, 1);
+var gtri = vp.append("circle").attr("cx", "300").attr("cy", "300").attr("r", "20").attr("fill", "url(#fadeoutwhite)");
+vp.append("line").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("stroke-opacity", "0.5").attr("x1", "350").attr("y1", "200").attr("x2", "600").attr("y2", "400");
+vp.append("line").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("stroke-opacity", "0.5").attr("x1", "350").attr("y1", "200").attr("x2", "300").attr("y2", "300");
+vp.append("line").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("stroke-opacity", "0.5").attr("x1", "300").attr("y1", "300").attr("x2", "600").attr("y2", "400");
