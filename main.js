@@ -6,6 +6,12 @@ for (var i = 0; i < 200; i ++) {
 }
 svg.append("rect").attr("width", "60%").attr("height", "20%").attr("x", "20%").attr("fill", "#0C032E").attr("stroke-width", "5").attr("stroke", "#34034F").classed("top", true);
 svg.append("text").classed("title", true).html("TRIANGULUM").attr("width", "60%").attr("height", "20%").attr("x", "50%").attr("y", "10%").attr("text-anchor", "middle").attr("alignment-baseline", "central");
-var atri = vp.append("g");
-atri.append("circle").attr("cx", "350").attr("cy", "180").attr("r", "20").attr("fill", "url(#fadeoutyellow)");
-atri.append("circle").attr("cx", "350").attr("cy", "220").attr("r", "20").attr("fill", "url(#fadeoutyellow)");
+var btri = vp.append("g");
+btri.append("circle").attr("cx", "350").attr("cy", "190").attr("r", "10").attr("fill", "url(#fadeoutwhite)");
+btri.append("circle").attr("cx", "350").attr("cy", "210").attr("r", "30").attr("fill", "url(#fadeoutwhite)");
+var btrirot = 0;
+setInterval(function() {
+	btri.attr("transform", "rotate(" + btrirot + " 350 200)");
+	btrirot += 1;
+	btrirot = btrirot % 360;
+}, 1);
