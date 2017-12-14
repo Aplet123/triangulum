@@ -15,3 +15,12 @@ setInterval(function() {
 	btrirot += 1;
 	btrirot = btrirot % 360;
 }, 1);
+var atri = vp.append("g");
+atri.append("circle").attr("cx", "600").attr("cy", "390").attr("r", "10").attr("fill", "url(#fadeoutwhite)");
+atri.append("circle").attr("cx", "600").attr("cy", "410").attr("r", "25").attr("fill", "url(#fadeoutyellow)");
+var atrirot = 45;
+setInterval(function() {
+	atri.attr("transform", "rotate(" + atrirot + " 350 200)");
+	atrirot += 1.3;
+	atrirot = atrirot % 360;
+}, 1);
