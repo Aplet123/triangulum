@@ -20,7 +20,7 @@ atri.append("circle").attr("cx", "600").attr("cy", "390").attr("r", "10").attr("
 atri.append("circle").attr("cx", "600").attr("cy", "410").attr("r", "25").attr("fill", "url(#fadeoutyellow)");
 var atrirot = 45;
 setInterval(function() {
-	atri.attr("transform", "rotate(" + atrirot + " 350 200)");
+	atri.attr("transform", "rotate(" + atrirot + " 600 400)");
 	atrirot += 1.3;
 	atrirot = atrirot % 360;
 }, 1);
