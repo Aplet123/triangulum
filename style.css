@@ -15,3 +15,6 @@
 .hidden {
 	visibility: hidden;
 }
+.top {
+	z-index: 100;
+}
