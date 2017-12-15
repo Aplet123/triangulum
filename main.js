@@ -31,22 +31,27 @@ setInterval(function() {
 }, 1);
 var gtri = vp.append("circle").attr("cx", "300").attr("cy", "300").attr("r", "20").attr("fill", "url(#fadeoutwhite)");
 var switchScreen = d3.transition().duration(1000).ease(d3.easePolyOut);
+function transitionMain () {
+	poly.transition(switchScreen).attr("fill-opacity", "0");
+	plough.transition(switchScreen).attr("opacity", "0");
+	if (mode != "main") {
+		return vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)");
+	} else {
+		return vp;
+	}
+}
 poly.on("click", function() {
 	if (mode != "triangulum") {
-		if (mode != "main") {
-			vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)").transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");
-		} else {
-			vp.transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");
-		}
+		transitionMain().transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");
 		mode = "triangulum";
 	}
 });
 box.on("click", function() {
 	if (mode[0] == "s") {
-		vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)").transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");;
+		transitionMain().transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");;
 		mode = "triangulum";
 	} else if (mode == "triangulum") {
-		vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)");
+		transitionMain();
 		mode = "main";
 	} else if (mode == "main") {
 		vp.transition(switchScreen).attr("transform", "scale(0.5) translate(200 500)");
@@ -54,7 +59,7 @@ box.on("click", function() {
 		plough.transition(switchScreen).attr("opacity", "1");
 		mode = "plough";
 	} else if (mode == "plough") {
-		vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)");
+		transitionMain().transition(switchScreen).attr("transform", "scale(1) translate(0 0)");
 		mode = "main";
 	}
 });
@@ -63,31 +68,19 @@ var btribox = vp.append("rect").attr("x", "310").attr("y", "160").attr("width", 
 var gtribox = vp.append("rect").attr("x", "260").attr("y", "260").attr("width", "80").attr("height", "80").attr("fill-opacity", "0");
 atribox.on("click", function() {
 	if (mode != "sa") {
-		if (mode != "main") {
-			vp.transition(switchScreen).attr("transform", "translate(0 0) scale(1)").transition(switchScreen).attr("transform", "scale(4) translate(-520 -350)");
-		} else {
-			vp.transition(switchScreen).attr("transform", " scale(6) translate(-520 -350)");
-		}
+		transitionMain().transition(switchScreen).attr("transform", " scale(6) translate(-520 -350)");
 		mode = "sa";
 	}
 });
 btribox.on("click", function() {
 	if (mode != "sb") {
-		if (mode != "main") {
-			vp.transition(switchScreen).attr("transform", "translate(0 0) scale(1)").transition(switchScreen).attr("transform", "scale(4) translate(-270 -150)");
-		} else {
-			vp.transition(switchScreen).attr("transform", " scale(6) translate(-270 -150)");
-		}
+		transitionMain().transition(switchScreen).attr("transform", " scale(6) translate(-270 -150)");
 		mode = "sb";
 	}
 });
 gtribox.on("click", function() {
 	if (mode != "sg") {
-		if (mode != "main") {
-			vp.transition(switchScreen).attr("transform", "translate(0 0) scale(1)").transition(switchScreen).attr("transform", "scale(4) translate(-270 -150)");
-		} else {
-			vp.transition(switchScreen).attr("transform", " scale(6) translate(-220 -250)");
-		}
+		transitionMain().transition(switchScreen).attr("transform", " scale(6) translate(-220 -250)");
 		mode = "sg";
 	}
 });
