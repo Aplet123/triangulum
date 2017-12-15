@@ -1,10 +1,12 @@
 var svg = d3.select("#main");
 svg.append("rect").attr("width", "100%").attr("height", "100%").attr("fill", "#0C032E");
 var vp = svg.append("g");
-for (var i = 0; i < 200; i ++) {
-	vp.append("circle").attr("cx", Math.floor(Math.random()*100) + "%").attr("cy", Math.floor(Math.random()*100) + "%").attr("r", Math.floor(Math.random()*10)).attr("fill", "url(#fadeoutwhite)");
+var mode = "main";
+vp.attr("transform", "scale(1) translate(0 0)");
+for (var i = 0; i < 1800; i ++) {
+	vp.append("circle").attr("cx", Math.floor(Math.random()*300) - 100 + "%").attr("cy", Math.floor(Math.random()*300) - 100 + "%").attr("r", Math.floor(Math.random()*10)).attr("fill", "url(#fadeoutwhite)");
 }
-svg.append("rect").attr("width", "60%").attr("height", "20%").attr("x", "20%").attr("fill", "#0C032E").attr("stroke-width", "5").attr("stroke", "#34034F").classed("top", true);
+var box = svg.append("rect").attr("width", "60%").attr("height", "20%").attr("x", "20%").attr("fill", "#0C032E").attr("stroke-width", "5").attr("stroke", "#34034F").classed("top", true);
 svg.append("text").classed("title", true).html("TRIANGULUM").attr("width", "60%").attr("height", "20%").attr("x", "50%").attr("y", "10%").attr("text-anchor", "middle").attr("alignment-baseline", "central");
 var btri = vp.append("g");
 btri.append("circle").attr("cx", "350").attr("cy", "190").attr("r", "10").attr("fill", "url(#fadeoutwhite)");
@@ -26,6 +28,42 @@ setInterval(function() {
 	atrirot = atrirot % 360;
 }, 1);
 var gtri = vp.append("circle").attr("cx", "300").attr("cy", "300").attr("r", "20").attr("fill", "url(#fadeoutwhite)");
-vp.append("line").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("stroke-opacity", "0.5").attr("x1", "350").attr("y1", "200").attr("x2", "600").attr("y2", "400");
-vp.append("line").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("stroke-opacity", "0.5").attr("x1", "350").attr("y1", "200").attr("x2", "300").attr("y2", "300");
-vp.append("line").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("stroke-opacity", "0.5").attr("x1", "300").attr("y1", "300").attr("x2", "600").attr("y2", "400");
+var switchScreen = d3.transition().duration(1000).ease(d3.easePolyOut);
+var poly = vp.append("polygon").attr("points", "350,200 600,400 300,300").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("fill-opacity", "0").attr("stroke-opacity", "0.5");
+poly.on("click", function() {
+	if (mode != "triangulum") {
+		if (mode != "main") {
+			vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)").transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");
+		} else {
+			vp.transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");
+		}
+		mode = "triangulum";
+	}
+});
+box.on("click", function() {
+	if (mode != "plough") {
+		if (mode[0] == "s") {
+			vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)").transition(switchScreen).attr("transform", "scale(1.7) translate(-270 -180)");
+			mode = "triangulum";
+		} else if (mode == "triangulum") {
+			vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)");
+			mode = "main";
+		} else if (mode == "main") {
+			vp.transition(switchScreen).attr("transform", "scale(0.5) translate(200 500)");
+			mode = "plough";
+		}
+	}
+});
+var atribox = vp.append("rect").attr("x", "560").attr("y", "360").attr("width", "80").attr("height", "80").attr("fill-opacity", "0");
+var btribox = vp.append("rect").attr("x", "310").attr("y", "160").attr("width", "80").attr("height", "80").attr("fill-opacity", "0");
+var gtribox = vp.append("rect").attr("x", "260").attr("y", "260").attr("width", "80").attr("height", "80").attr("fill-opacity", "0");
+atribox.on("click", function() {
+	if (mode != "sa") {
+		if (mode != "main") {
+			vp.transition(switchScreen).attr("transform", "translate(0 0) scale(1)").transition(switchScreen).attr("transform", "scale(4) translate(-600 -400)");
+		} else {
+			vp.transition(switchScreen).attr("transform", " scale(6) translate(-520 -350)");
+		}
+		mode = "sa";
+	}
+});

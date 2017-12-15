@@ -9,9 +9,9 @@
 *:focus {
 	outline: 0;
 }
-/*line, text, tspan, #coordinategrid {
+text, tspan {
 	pointer-events: none;
-}*/
+}
 .hidden {
 	visibility: hidden;
 }
