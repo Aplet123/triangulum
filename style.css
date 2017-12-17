@@ -23,3 +23,11 @@ text, tspan {
 	font-size: 60px;
 	fill: #ffffff;
 }
+.regular {
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
+	fill: #ffffff;
+}
+.bold {
+	font-weight: bold;
+}

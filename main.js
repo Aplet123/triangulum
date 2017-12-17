@@ -3,12 +3,19 @@ svg.append("rect").attr("width", "100%").attr("height", "100%").attr("fill", "#0
 var vp = svg.append("g");
 var mode = "main";
 vp.attr("transform", "scale(1) translate(0 0)");
+var backstars = vp.append("g");
 for (var i = 0; i < 1800; i ++) {
-	vp.append("circle").attr("cx", Math.floor(Math.random()*300) - 100 + "%").attr("cy", Math.floor(Math.random()*300) - 100 + "%").attr("r", Math.floor(Math.random()*10)).attr("fill", "url(#fadeoutwhite)");
+	backstars.append("circle").attr("cx", Math.floor(Math.random()*300) - 100 + "%").attr("cy", Math.floor(Math.random()*300) - 100 + "%").attr("r", Math.floor(Math.random()*10)).attr("fill", "url(#fadeoutwhite)");
 }
 var box = svg.append("rect").attr("width", "60%").attr("height", "20%").attr("x", "20%").attr("fill", "#0C032E").attr("stroke-width", "5").attr("stroke", "#34034F").classed("top", true);
-svg.append("text").classed("title", true).html("TRIANGULUM").attr("width", "60%").attr("height", "20%").attr("x", "50%").attr("y", "10%").attr("text-anchor", "middle").attr("alignment-baseline", "central");
+var title = svg.append("text").classed("title", true).html("Triangulum").attr("x", "50%").attr("y", "10%").attr("text-anchor", "middle").attr("alignment-baseline", "central");
+var ptext = svg.append("text").classed("title", true).html("The Plough").attr("x", "200%").attr("y", "10%").attr("text-anchor", "middle").attr("alignment-baseline", "central");
+var ttext = svg.append("text").classed("regular", true).html("<tspan class='bold'>Triangulum</tspan>").attr("x", "200%").attr("y", "4%").attr("text-anchor", "middle").attr("alignment-baseline", "central");
+ttext.append("tspan").attr("dy", "1.2em").attr("x", "50%").html("hi");
+var ct = title;
 var plough = vp.append("image").attr("href", "plough.png").attr("x", "120").attr("y", "-60").attr("width", "512").attr("height", "300").attr("transform", "scale(1.6)").attr("opacity", "0");
+vp.append("rect").attr("width", "487.926pt").attr("height", "449.094pt").attr("fill", "#ffffff").attr("x", "1100").attr("y", "-60");
+vp.append("image").attr("href", "triangulum.svg").attr("x", "1100").attr("y", "-60").attr("width", "487.926pt").attr("height", "449.094pt");
 var poly = vp.append("polygon").attr("points", "350,200 600,400 300,300").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("fill-opacity", "0").attr("stroke-opacity", "0.5").attr("fill", "#0C032E");
 var btri = vp.append("g");
 btri.append("circle").attr("cx", "350").attr("cy", "190").attr("r", "10").attr("fill", "url(#fadeoutwhite)");
@@ -34,6 +41,10 @@ var switchScreen = d3.transition().duration(1000).ease(d3.easePolyOut);
 function transitionMain () {
 	poly.transition(switchScreen).attr("fill-opacity", "0");
 	plough.transition(switchScreen).attr("opacity", "0");
+	var oct = ct;
+	ct.transition(switchScreen).attr("x", "-200%").on("end", function() {
+		oct.attr("x", "200%");
+	});
 	if (mode != "main") {
 		return vp.transition(switchScreen).attr("transform", "scale(1) translate(0 0)");
 	} else {
@@ -43,6 +54,8 @@ function transitionMain () {
 poly.on("click", function() {
 	if (mode != "triangulum") {
 		transitionMain().transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");
+		ct = ttext;
+		ttext.transition(switchScreen).attr("x", "50%");
 		mode = "triangulum";
 	}
 });
@@ -52,14 +65,23 @@ box.on("click", function() {
 		mode = "triangulum";
 	} else if (mode == "triangulum") {
 		transitionMain();
+		title.transition(switchScreen).attr("x", "50%");
+		ct = title;
 		mode = "main";
 	} else if (mode == "main") {
 		vp.transition(switchScreen).attr("transform", "scale(0.5) translate(200 500)");
 		poly.transition(switchScreen).attr("fill-opacity", "1");
 		plough.transition(switchScreen).attr("opacity", "1");
+		ct = ptext;
+		title.transition(switchScreen).attr("x", "-200%").on("end", function() {
+			title.attr("x", "200%");
+		});
+		ptext.transition(switchScreen).attr("x", "50%");
 		mode = "plough";
 	} else if (mode == "plough") {
 		transitionMain().transition(switchScreen).attr("transform", "scale(1) translate(0 0)");
+		title.transition(switchScreen).attr("x", "50%");
+		ct = title;
 		mode = "main";
 	}
 });
