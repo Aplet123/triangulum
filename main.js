@@ -22,11 +22,21 @@ ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Best visible 
 ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("between latitudes +90 and -60");
 ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Has an area of 132 square degrees");
 ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Has 42 stars, 3 of which are significant");
-var atext = svg.append("text").classed("bigger", true).html("<tspan class='bold' text-anchor='middle'>Alpha Trianguli</tspan>").attr("x", "80%").attr("y", "3%").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
+var atext = svg.append("text").classed("bigger", true).html("<tspan class='bold' text-anchor='middle'>Alpha Trianguli</tspan>").attr("x", "80%").attr("y", "4%").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
 atext.append("tspan").attr("dy", "1.6em").attr("x", "61%").html("- The apex of Triangulum");
 atext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Also known as Mothallah");
 atext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Yellow-white subgiant");
 atext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Binary star");
+atext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Apparent magnitude of 3.41");
+var btext = svg.append("text").classed("bigger", true).html("<tspan class='bold' text-anchor='middle'>Beta Trianguli</tspan>").attr("x", "80%").attr("y", "4%").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
+btext.append("tspan").attr("dy", "1.6em").attr("x", "61%").html("- The brightest star in Triangulum");
+btext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- White giant");
+btext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Binary star");
+btext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Apparent magnitude of 3");
+var gtext = svg.append("text").classed("bigger", true).html("<tspan class='bold' text-anchor='middle'>Gamma Trianguli</tspan>").attr("x", "80%").attr("y", "4%").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
+gtext.append("tspan").attr("dy", "1.6em").attr("x", "61%").html("- Twice the size of the sun");
+gtext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- White main sequence star");
+gtext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Apparent magnitude of 3");
 var ct = title;
 var plough = vp.append("image").attr("href", "plough.png").attr("x", "120").attr("y", "-60").attr("width", "512").attr("height", "300").attr("transform", "scale(1.6)").attr("opacity", "0");
 vp.append("rect").attr("width", "487.926pt").attr("height", "449.094pt").attr("fill", "#ffffff").attr("x", "1100").attr("y", "-60");
@@ -113,6 +123,7 @@ var gtribox = vp.append("rect").attr("x", "260").attr("y", "260").attr("width", 
 atribox.on("click", function() {
 	if (mode != "sa") {
 		transitionMain().transition(switchScreen).attr("transform", " scale(6) translate(-520 -350)");
+		box.transition(switchScreen).attr("width", "40%").attr("height", "45%").attr("x", "60%");
 		mode = "sa";
 		ct = atext;
 		atext.transition(switchScreen).attr("transform", "translate(0 0)");
@@ -121,12 +132,16 @@ atribox.on("click", function() {
 btribox.on("click", function() {
 	if (mode != "sb") {
 		transitionMain().transition(switchScreen).attr("transform", " scale(6) translate(-270 -150)");
+		box.transition(switchScreen).attr("width", "40%").attr("height", "45%").attr("x", "60%");
 		mode = "sb";
+		ct = btext;
+		btext.transition(switchScreen).attr("transform", "translate(0 0)");
 	}
 });
 gtribox.on("click", function() {
 	if (mode != "sg") {
 		transitionMain().transition(switchScreen).attr("transform", " scale(6) translate(-220 -250)");
+		box.transition(switchScreen).attr("width", "40%").attr("height", "45%").attr("x", "60%");
 		mode = "sg";
 	}
 });
