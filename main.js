@@ -22,8 +22,11 @@ ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Best visible 
 ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("between latitudes +90 and -60");
 ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Has an area of 132 square degrees");
 ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Has 42 stars, 3 of which are significant");
-var atext = svg.append("text").classed("bigger", true).html("<tspan class='bold'>Alpha Trianguli</tspan>").attr("x", "50%").attr("y", "4%").attr("text-anchor", "middle").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
-atext.append("tspan").attr("dy", "1.2em").attr("x", "50%").html("Alpha Trianguli is the apex of Triangulum. ");
+var atext = svg.append("text").classed("bigger", true).html("<tspan class='bold' text-anchor='middle'>Alpha Trianguli</tspan>").attr("x", "80%").attr("y", "3%").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
+atext.append("tspan").attr("dy", "1.6em").attr("x", "61%").html("- The apex of Triangulum");
+atext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Also known as Mothallah");
+atext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Yellow-white subgiant");
+atext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Binary star");
 var ct = title;
 var plough = vp.append("image").attr("href", "plough.png").attr("x", "120").attr("y", "-60").attr("width", "512").attr("height", "300").attr("transform", "scale(1.6)").attr("opacity", "0");
 vp.append("rect").attr("width", "487.926pt").attr("height", "449.094pt").attr("fill", "#ffffff").attr("x", "1100").attr("y", "-60");
