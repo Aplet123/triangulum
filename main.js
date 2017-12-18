@@ -7,15 +7,23 @@ var backstars = vp.append("g");
 for (var i = 0; i < 1800; i ++) {
 	backstars.append("circle").attr("cx", Math.floor(Math.random()*300) - 100 + "%").attr("cy", Math.floor(Math.random()*300) - 100 + "%").attr("r", Math.floor(Math.random()*10)).attr("fill", "url(#fadeoutwhite)");
 }
-var box = svg.append("rect").attr("width", "60%").attr("height", "20%").attr("x", "20%").attr("fill", "#0C032E").attr("stroke-width", "5").attr("stroke", "#34034F").classed("top", true);
+var box = svg.append("rect").attr("width", "60%").attr("height", "20%").attr("x", "20%").attr("fill", "#0C032E").attr("stroke-width", "5").attr("stroke", "#34034F");
 var title = svg.append("text").classed("title", true).html("Triangulum").attr("x", "50%").attr("y", "10%").attr("text-anchor", "middle").attr("alignment-baseline", "central").attr("transform", "translate(0 0)");
 var ptext = svg.append("text").classed("title", true).html("The Plough").attr("x", "50%").attr("y", "10%").attr("text-anchor", "middle").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
-var ttext = svg.append("text").classed("regular", true).html("<tspan class='bold'>Triangulum</tspan>").attr("x", "50%").attr("y", "3%").attr("text-anchor", "middle").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
-ttext.append("tspan").attr("dy", "1.2em").attr("x", "50%").html("Triangulum was discovered by the Babylonians around 1000 BCE. Its first appearance");
-ttext.append("tspan").attr("dy", "1.2em").attr("x", "50%").html("marked the time to start ploughing in Mesopotamia. It has 42 stars, however only 3 are");
-ttext.append("tspan").attr("dy", "1.2em").attr("x", "50%").html("notable. It is also known as The Plough, Deltoton, and Sicilia (Island of Sicily). It is located");
-ttext.append("tspan").attr("dy", "1.2em").attr("x", "50%").html("in the first quadrant of the Northern Hemisphere. Its area is 132 square degrees. It is visible");
-ttext.append("tspan").attr("dy", "1.2em").attr("x", "50%").html("between latitudes of +90 and -90 degrees and is best visible late November to December.");
+var ttext = svg.append("text").classed("regular", true).html("<tspan class='bold' text-anchor='middle'>Triangulum</tspan>").attr("x", "80%").attr("y", "3%").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
+ttext.append("tspan").attr("dy", "1.6em").attr("x", "61%").html("- Triangulum is Babylonian.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It was discovered around 1000 BCE.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It first appears in February.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It represents the time to start ploughing.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It has 42 stars, 3 of which are notable.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It is known as The Plough, Deltoton, and Sicilia.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It is located in the North Hemisphere.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It is in the first quadrant.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It is visible in latitudes from 90 to -60 degrees.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Best visible in winter, from late November to December.");
+ttext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- It has an area of 132 square degrees.");
+var atext = svg.append("text").classed("bigger", true).html("<tspan class='bold'>Alpha Trianguli</tspan>").attr("x", "50%").attr("y", "4%").attr("text-anchor", "middle").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
+atext.append("tspan").attr("dy", "1.2em").attr("x", "50%").html("Alpha Trianguli is the apex of Triangulum. ");
 var ct = title;
 var plough = vp.append("image").attr("href", "plough.png").attr("x", "120").attr("y", "-60").attr("width", "512").attr("height", "300").attr("transform", "scale(1.6)").attr("opacity", "0");
 vp.append("rect").attr("width", "487.926pt").attr("height", "449.094pt").attr("fill", "#ffffff").attr("x", "1100").attr("y", "-60");
@@ -58,6 +66,7 @@ function transitionMain () {
 poly.on("click", function() {
 	if (mode != "triangulum") {
 		transitionMain().transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");
+		box.transition(switchScreen).attr("width", "40%").attr("height", "45%").attr("x", "60%");
 		ct = ttext;
 		ttext.transition(switchScreen).attr("transform", "translate(0 0)");
 		mode = "triangulum";
@@ -65,10 +74,14 @@ poly.on("click", function() {
 });
 box.on("click", function() {
 	if (mode[0] == "s") {
-		transitionMain().transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");;
+		transitionMain().transition(switchScreen).attr("transform", "scale(1.7) translate(-170 -110)");
+		box.transition(switchScreen).attr("width", "40%").attr("height", "45%").attr("x", "60%");
 		mode = "triangulum";
+		ct = ttext;
+		ttext.transition(switchScreen).attr("transform", "translate(0 0)");
 	} else if (mode == "triangulum") {
 		transitionMain();
+		box.transition(switchScreen).attr("width", "60%").attr("height", "20%").attr("x", "20%");
 		title.transition(switchScreen).attr("transform", "translate(0 0)");
 		ct = title;
 		mode = "main";
@@ -76,6 +89,7 @@ box.on("click", function() {
 		vp.transition(switchScreen).attr("transform", "scale(0.5) translate(200 500)");
 		poly.transition(switchScreen).attr("fill-opacity", "1");
 		plough.transition(switchScreen).attr("opacity", "1");
+		box.transition(switchScreen).attr("width", "60%").attr("height", "20%").attr("x", "20%");
 		ct = ptext;
 		title.transition(switchScreen).attr("transform", "translate(-10000 0)").on("end", function() {
 			title.attr("transform", "translate(10000 0)");
@@ -84,6 +98,7 @@ box.on("click", function() {
 		mode = "plough";
 	} else if (mode == "plough") {
 		transitionMain().transition(switchScreen).attr("transform", "scale(1) translate(0 0)");
+		box.transition(switchScreen).attr("width", "60%").attr("height", "20%").attr("x", "20%");
 		title.transition(switchScreen).attr("transform", "translate(0 0)");
 		ct = title;
 		mode = "main";
@@ -96,6 +111,8 @@ atribox.on("click", function() {
 	if (mode != "sa") {
 		transitionMain().transition(switchScreen).attr("transform", " scale(6) translate(-520 -350)");
 		mode = "sa";
+		ct = atext;
+		atext.transition(switchScreen).attr("transform", "translate(0 0)");
 	}
 });
 btribox.on("click", function() {

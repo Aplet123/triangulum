@@ -15,9 +15,6 @@ text, tspan {
 .hidden {
 	visibility: hidden;
 }
-.top {
-	z-index: 100;
-}
 .title {
 	font-family: "Open Sans", sans-serif;
 	font-size: 60px;
@@ -26,6 +23,11 @@ text, tspan {
 .regular {
 	font-family: "Open Sans", sans-serif;
 	font-size: 14px;
+	fill: #ffffff;
+}
+.bigger {
+	font-family: "Open Sans", sans-serif;
+	font-size: 20px;
 	fill: #ffffff;
 }
 .bold {
