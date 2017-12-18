@@ -143,5 +143,7 @@ gtribox.on("click", function() {
 		transitionMain().transition(switchScreen).attr("transform", " scale(6) translate(-220 -250)");
 		box.transition(switchScreen).attr("width", "40%").attr("height", "45%").attr("x", "60%");
 		mode = "sg";
+		ct = gtext;
+		gtext.transition(switchScreen).attr("transform", "translate(0 0)");
 	}
 });
