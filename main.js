@@ -40,7 +40,7 @@ gtext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Apparent magn
 var ct = title;
 var plough = vp.append("image").attr("href", "plough.png").attr("x", "120").attr("y", "-60").attr("width", "512").attr("height", "300").attr("transform", "scale(1.6)").attr("opacity", "0");
 vp.append("rect").attr("width", "487.926pt").attr("height", "449.094pt").attr("fill", "#ffffff").attr("x", "1100").attr("y", "-60");
-vp.append("image").attr("href", "triangulum.svg").attr("x", "1100").attr("y", "-60").attr("width", "487.926pt").attr("height", "449.094pt");
+vp.append("image").attr("href", "triangulum.jpg").attr("x", "1100").attr("y", "-60").attr("width", "491").attr("height", "620");
 var poly = vp.append("polygon").attr("points", "350,200 600,400 300,300").attr("stroke-width", "3").attr("stroke", "#ffffff").attr("fill-opacity", "0").attr("stroke-opacity", "0.5").attr("fill", "#0C032E");
 var btri = vp.append("g");
 btri.append("circle").attr("cx", "350").attr("cy", "190").attr("r", "10").attr("fill", "url(#fadeoutwhite)");
