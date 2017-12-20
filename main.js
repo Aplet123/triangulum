@@ -36,7 +36,7 @@ btext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Apparent magn
 var gtext = svg.append("text").classed("bigger", true).html("<tspan class='bold' text-anchor='middle'>Gamma Trianguli</tspan>").attr("x", "80%").attr("y", "4%").attr("alignment-baseline", "central").attr("transform", "translate(10000 0)");
 gtext.append("tspan").attr("dy", "1.6em").attr("x", "61%").html("- Twice the size of the sun");
 gtext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- White main sequence star");
-gtext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Apparent magnitude of 3");
+gtext.append("tspan").attr("dy", "1.4em").attr("x", "61%").html("- Apparent magnitude of 4");
 var ct = title;
 var plough = vp.append("image").attr("href", "plough.png").attr("x", "120").attr("y", "-60").attr("width", "512").attr("height", "300").attr("transform", "scale(1.6)").attr("opacity", "0");
 vp.append("rect").attr("width", "487.926pt").attr("height", "449.094pt").attr("fill", "#ffffff").attr("x", "1100").attr("y", "-60");
